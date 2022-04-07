@@ -82,7 +82,7 @@ contract ERC721 {
 
   // EIP: QUERY is a contract implemenbts another interface
   function supportInterface(bytes4 interfaceId) public pure virtual returns(bool) {
-    return interfaceId == 0x8ac58cd;
+    return interfaceId == 0x80ac58cd;
   }
 
 }
