@@ -1,19 +1,17 @@
-const {ethers} = require('hardhat');
-require("@nomiclabs/hardhat-waffle");
+
+const { ethers } = require("hardhat");
 
 async function main() {
 
-  const SuperMarioWorld = await hre.ethers.getContractFactory('SuperMarioWorld')
-  const superMarioWorld = await SuperMarioWorld.deploy('SuperMarioWorld', 'SPRM')
+  const SuperMarioWorld = await ethers.getContractFactory("SuperMarioWorldERC1155");
+  const superMarioWorld = await SuperMarioWorld.deploy("SuperMarioWorldERC1155", "SPRME");
 
-  await superMarioWorld.deployed()
+  await superMarioWorld.deployed();
+  console.log("Success! Contract was deployed to: ", superMarioWorld.address);
 
-  console.log('Success! Contract was deployed to: ', superMarioWorld.address);
+  await superMarioWorld.mint(10, "https://ipfs.io/ipfs/QmUYMgqe6AQVaw2UjYJ2NdAEdRnSB2k6VdMnHjhQ1swvMG")
 
-  await superMarioWorld.mint('https://ipfs.io/ipfs/QmNQbvs461u2LitsQAHGigSYuRmnFspQwd8J3JKVHSDeNY')
-
-  console.log("NFT successfully deployed");
-
+  console.log("NFT successfully minted");
 }
 
 main()
